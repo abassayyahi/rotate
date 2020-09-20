@@ -27,7 +27,7 @@ def rotatee(image):
     # gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     
-    rot = cv2.rotate(image=image, cv2.ROTATE_90_CLOCKWISE)
+    rot = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
     
 
     # Returning the image with bounding boxes drawn on it (in case of detected objects), and faces array
@@ -35,23 +35,23 @@ def rotatee(image):
 
 
 def about():
-	st.write(
-		'''
-		**Haar Cascade** is an object detection algorithm.
-		It can be used to detect objects in images or videos. 
+    st.write(
+        '''
+        **Haar Cascade** is an object detection algorithm.
+        It can be used to detect objects in images or videos. 
 
-		The algorithm has four stages:
+        The algorithm has four stages:
 
-			1. Haar Feature Selection 
-			2. Creating  Integral Images
-			3. Adaboost Training
-			4. Cascading Classifiers
+            1. Haar Feature Selection 
+            2. Creating  Integral Images
+            3. Adaboost Training
+            4. Cascading Classifiers
 
 
 
 Read more :point_right: https://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html
 https://sites.google.com/site/5kk73gpu2012/assignment/viola-jones-face-detection#TOC-Image-Pyramid
-		''')
+        ''')
 
 
 def main():
@@ -63,25 +63,25 @@ def main():
 
     if choice == "Home":
 
-    	st.write("Go to the About section from the sidebar to learn more about it.")
+        st.write("Go to the About section from the sidebar to learn more about it.")
         
         # You can specify more file types below if you want
-    	image_file = st.file_uploader("Upload image", type=['jpeg', 'png', 'jpg', 'webp'])
+        image_file = st.file_uploader("Upload image", type=['jpeg', 'png', 'jpg', 'webp'])
 
-    	if image_file is not None:
+        if image_file is not None:
 
-    		image = Image.open(image_file)
+            image = Image.open(image_file)
 
-    		if st.button("Process"):
+            if st.button("Process"):
                 
                 # result_img is the image with rectangle drawn on it (in case there are faces detected)
                 # result_faces is the array with co-ordinates of bounding box(es)
-    			result_img = rotatee(image=image)
-    			st.image(result_img, use_column_width = True)
-    			st.success("ROTATE - 90 - CLOCKWISE")
+                result_img = rotatee(image=image)
+                st.image(result_img, use_column_width = True)
+                st.success("ROTATE - 90 - CLOCKWISE")
 
     elif choice == "About":
-    	about()
+        about()
 
 
 
